@@ -27,7 +27,7 @@ class TableSectionHeader: UITableViewHeaderFooterView {
 
         var publishedAtString: String? {
             get {
-                let dateFormatter = DateFormatter.RelativeTimeFormatter
+                let dateFormatter = DateFormatter.AbsoluteTimeFormatter
                 return dateFormatter.unwrappedString(from: publishedAt)
             }
         }
