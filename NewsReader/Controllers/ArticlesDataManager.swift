@@ -28,11 +28,10 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
         let dateSort = NSSortDescriptor(key: "publishedAt", ascending: false)
         request.sortDescriptors = [dateSort]
 
-        let dataControllerCore = DataController() {
+        let dataController = ((UIApplication.shared.delegate as? AppDelegate)?.dataController)!
+        let moc = dataController.managedObjectContext
 
-        }
-
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataControllerCore.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
 
 
         fetchedResultsController.delegate = self
@@ -49,29 +48,15 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
         delegate?.dataManagerWillChangeContent(dataManager: self)
     }
 
-
-    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            break
-        case .delete:
-            break
-        case .move:
-            break
-        case .update:
-            break
-        }
-    }
-
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
-            break
+            delegate?.dataManager(dataManager: self, didInsertRowAtIndexPath: newIndexPath!)
         case .delete:
+            delegate?.dataManager(dataManager: self, didDeleteRowAtIndexPath: indexPath!)
+        case .move:
             break
         case .update:
-            break
-        case .move:
             break
         }
     }
@@ -88,4 +73,6 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
 protocol ArticlesDataManagerDelegate {
     func dataManagerWillChangeContent(dataManager: ArticlesDataManager)
     func dataManagerDidChangeContent(dataManager: ArticlesDataManager)
+    func dataManager(dataManager: ArticlesDataManager, didInsertRowAtIndexPath indexPath: IndexPath)
+    func dataManager(dataManager: ArticlesDataManager, didDeleteRowAtIndexPath indexPath: IndexPath)
 }

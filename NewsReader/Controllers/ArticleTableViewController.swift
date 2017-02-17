@@ -10,7 +10,7 @@ import UIKit
 
 class ArticleTableViewController: UITableViewController, ArticlesDataManagerDelegate {
 
-    private let articlesDataManager = ArticlesDataManager()
+    private lazy var articlesDataManager = ArticlesDataManager()
     
     private var previewSection: TableSectionHeader {
         get {
@@ -97,6 +97,15 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         let navigationBar = self.navigationController?.navigationBar
         navigationBar?.setStatusBarColor()
 //        self.navigationController?.navigationBar.setTransparentNavigationBar()
+    }
+
+
+    func dataManager(dataManager: ArticlesDataManager, didInsertRowAtIndexPath indexPath: IndexPath) {
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+
+    func dataManager(dataManager: ArticlesDataManager, didDeleteRowAtIndexPath indexPath: IndexPath) {
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     private func downloadArticles() {
