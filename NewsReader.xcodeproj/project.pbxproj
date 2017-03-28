@@ -92,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				7E43BF1E1E8AC2CE00AE53C8 /* NewsReader */,
+				7E43BF2E1E8AC2CE00AE53C8 /* Info.plist */,
 				7E43BF361E8AC2CE00AE53C8 /* NewsReaderTests */,
 				7E43BF1D1E8AC2CE00AE53C8 /* Products */,
 				28955AB708C57B78C7F23AA6 /* Pods */,
@@ -170,7 +171,6 @@
 				7E43BF1F1E8AC2CE00AE53C8 /* AppDelegate.swift */,
 				7E43BF2B1E8AC2CE00AE53C8 /* LaunchScreen.storyboard */,
 				7E43BF291E8AC2CE00AE53C8 /* Assets.xcassets */,
-				7E43BF2E1E8AC2CE00AE53C8 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			path = ..;
