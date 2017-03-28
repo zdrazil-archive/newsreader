@@ -15,6 +15,7 @@
 		7E43BF2D1E8AC2CE00AE53C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E43BF2B1E8AC2CE00AE53C8 /* LaunchScreen.storyboard */; };
 		7E43BF381E8AC2CE00AE53C8 /* NewsReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43BF371E8AC2CE00AE53C8 /* NewsReaderTests.swift */; };
 		7ECC0C681E8ACE1700C42FCA /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC0C671E8ACE1700C42FCA /* CoreDataModel.swift */; };
+		7ECC0C6A1E8ACE6000C42FCA /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC0C691E8ACE6000C42FCA /* DataController.swift */; };
 		9FDBEE437D838E7F034EC1DA /* Pods_NewsReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F19BC7A3EAC5D0E713235D /* Pods_NewsReaderTests.framework */; };
 		F493DDBDAD7F737DE2CECA4A /* Pods_NewsReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3C147CFC67C6698046F212 /* Pods_NewsReader.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		7E43BF371E8AC2CE00AE53C8 /* NewsReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderTests.swift; sourceTree = "<group>"; };
 		7E43BF391E8AC2CE00AE53C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ECC0C671E8ACE1700C42FCA /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		7ECC0C691E8ACE6000C42FCA /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		C4F19BC7A3EAC5D0E713235D /* Pods_NewsReaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsReaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A00871678F54D20857488A /* Pods-NewsReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReaderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsReaderTests/Pods-NewsReaderTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				7E43BF211E8AC2CE00AE53C8 /* ViewController.swift */,
+				7ECC0C691E8ACE6000C42FCA /* DataController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ECC0C6A1E8ACE6000C42FCA /* DataController.swift in Sources */,
 				7E43BF281E8AC2CE00AE53C8 /* ArticleModel.xcdatamodeld in Sources */,
 				7E43BF221E8AC2CE00AE53C8 /* ViewController.swift in Sources */,
 				7ECC0C681E8ACE1700C42FCA /* CoreDataModel.swift in Sources */,
