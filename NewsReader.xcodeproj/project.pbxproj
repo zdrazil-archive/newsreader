@@ -34,11 +34,11 @@
 		6340F20F9CEE423F41860ABF /* Pods-NewsReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsReader/Pods-NewsReader.release.xcconfig"; sourceTree = "<group>"; };
 		6BA33CFE356A56B8588D8AA7 /* Pods-NewsReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsReader/Pods-NewsReader.debug.xcconfig"; sourceTree = "<group>"; };
 		7E43BF1C1E8AC2CE00AE53C8 /* NewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E43BF1F1E8AC2CE00AE53C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NewsReader/AppDelegate.swift; sourceTree = "<group>"; };
-		7E43BF211E8AC2CE00AE53C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = NewsReader/ViewController.swift; sourceTree = "<group>"; };
+		7E43BF1F1E8AC2CE00AE53C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7E43BF211E8AC2CE00AE53C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7E43BF241E8AC2CE00AE53C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E43BF271E8AC2CE00AE53C8 /* NewsReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsReader.xcdatamodel; sourceTree = "<group>"; };
-		7E43BF291E8AC2CE00AE53C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = NewsReader/Assets.xcassets; sourceTree = "<group>"; };
+		7E43BF291E8AC2CE00AE53C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E43BF2C1E8AC2CE00AE53C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E43BF2E1E8AC2CE00AE53C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = NewsReader/Info.plist; sourceTree = "<group>"; };
 		7E43BF331E8AC2CE00AE53C8 /* NewsReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,12 +91,12 @@
 		7E43BF131E8AC2CE00AE53C8 = {
 			isa = PBXGroup;
 			children = (
-				7E43BF1E1E8AC2CE00AE53C8 /* NewsReader */,
-				7E43BF2E1E8AC2CE00AE53C8 /* Info.plist */,
-				7E43BF361E8AC2CE00AE53C8 /* NewsReaderTests */,
-				7E43BF1D1E8AC2CE00AE53C8 /* Products */,
-				28955AB708C57B78C7F23AA6 /* Pods */,
 				0A8CC25BAE79B170E13567A8 /* Frameworks */,
+				7E43BF1E1E8AC2CE00AE53C8 /* NewsReader */,
+				7E43BF361E8AC2CE00AE53C8 /* NewsReaderTests */,
+				28955AB708C57B78C7F23AA6 /* Pods */,
+				7E43BF1D1E8AC2CE00AE53C8 /* Products */,
+				7E43BF2E1E8AC2CE00AE53C8 /* Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,10 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				7EDD3C221E8AC5B800F2987E /* Models */,
-				7EDD3C251E8AC5D200F2987E /* Views */,
 				7EDD3C201E8AC5B300F2987E /* Controllers */,
-				7EDD3C231E8AC5B900F2987E /* Stores */,
+				7EDD3C251E8AC5D200F2987E /* Views */,
 				7EDD3C211E8AC5B400F2987E /* Helpers */,
+				7EDD3C231E8AC5B900F2987E /* Stores */,
 				7EDD3C241E8AC5B900F2987E /* Supporting Files */,
 			);
 			path = NewsReader;
@@ -125,8 +125,8 @@
 		7E43BF361E8AC2CE00AE53C8 /* NewsReaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				7E43BF371E8AC2CE00AE53C8 /* NewsReaderTests.swift */,
 				7E43BF391E8AC2CE00AE53C8 /* Info.plist */,
+				7E43BF371E8AC2CE00AE53C8 /* NewsReaderTests.swift */,
 			);
 			path = NewsReaderTests;
 			sourceTree = "<group>";
@@ -136,16 +136,14 @@
 			children = (
 				7E43BF211E8AC2CE00AE53C8 /* ViewController.swift */,
 			);
-			name = Controllers;
-			path = ..;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		7EDD3C211E8AC5B400F2987E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Helpers;
-			path = ..;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		7EDD3C221E8AC5B800F2987E /* Models */ = {
@@ -153,27 +151,24 @@
 			children = (
 				7EDD3C261E8AC63400F2987E /* ArticleCoreData */,
 			);
-			name = Models;
-			path = ..;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7EDD3C231E8AC5B900F2987E /* Stores */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Stores;
-			path = ..;
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		7EDD3C241E8AC5B900F2987E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				7E43BF1F1E8AC2CE00AE53C8 /* AppDelegate.swift */,
-				7E43BF2B1E8AC2CE00AE53C8 /* LaunchScreen.storyboard */,
 				7E43BF291E8AC2CE00AE53C8 /* Assets.xcassets */,
+				7E43BF2B1E8AC2CE00AE53C8 /* LaunchScreen.storyboard */,
 			);
-			name = "Supporting Files";
-			path = ..;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7EDD3C251E8AC5D200F2987E /* Views */ = {
@@ -181,8 +176,7 @@
 			children = (
 				7E43BF231E8AC2CE00AE53C8 /* Main.storyboard */,
 			);
-			name = Views;
-			path = ..;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7EDD3C261E8AC63400F2987E /* ArticleCoreData */ = {
@@ -190,7 +184,7 @@
 			children = (
 				7E43BF261E8AC2CE00AE53C8 /* NewsReader.xcdatamodeld */,
 			);
-			name = ArticleCoreData;
+			path = ArticleCoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,7 +422,7 @@
 				7E43BF241E8AC2CE00AE53C8 /* Base */,
 			);
 			name = Main.storyboard;
-			path = NewsReader;
+			path = .;
 			sourceTree = "<group>";
 		};
 		7E43BF2B1E8AC2CE00AE53C8 /* LaunchScreen.storyboard */ = {
@@ -437,7 +431,7 @@
 				7E43BF2C1E8AC2CE00AE53C8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = NewsReader;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -635,8 +629,7 @@
 				7E43BF271E8AC2CE00AE53C8 /* NewsReader.xcdatamodel */,
 			);
 			currentVersion = 7E43BF271E8AC2CE00AE53C8 /* NewsReader.xcdatamodel */;
-			name = NewsReader.xcdatamodeld;
-			path = NewsReader/NewsReader.xcdatamodeld;
+			path = NewsReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
