@@ -23,9 +23,9 @@ struct Article: Mappable {
     mutating func mapping(map: Map) {
         description <- map["description"]
         author      <- map["author"]
-        imageURL    <- map["urlToImage"]
-        publishedAt <- map["publishedAt"]
+        imageURL    <- (map["urlToImage"], URLTransform())
+        publishedAt <- (map["publishedAt"], DateTransform())
         title       <- map["title"]
-        url         <- map["url"]
+        url         <- (map["url"], URLTransform())
     }
 }
