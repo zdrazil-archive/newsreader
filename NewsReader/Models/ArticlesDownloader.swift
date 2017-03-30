@@ -26,7 +26,7 @@ class ArticlesDownloader: NSObject {
     }
     
     private func saveArticlesToCoreData(articles: [Article]?) {
-        let dataController = (UIApplication.shared.delegate as? AppDelegate)?.articleDataController
+        let dataController = (UIApplication.shared.delegate as? AppDelegate)?.dataController
         let moc = dataController?.managedObjectContext
         let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         privateMOC.parent = moc
