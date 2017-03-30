@@ -15,7 +15,16 @@ class DataController: NSObject {
     
     // storeFileLocationURL - The directory the application uses to store the Core Data store file.
     // modelFileName - name of the saved file
-    init(modelURL: URL, storeFileLocationURL: URL, modelFileName: String, concurrencyType: NSManagedObjectContextConcurrencyType) throws {
+    init(modelURL: URL, storeFileLocationURL: URL, modelFileName: String, concurrencyType: NSManagedObjectContextConcurrencyType) dthrows {
+        guard let modelURL = Bundle.main.url(forResource: "ArticleModel", withExtension:"momd") else {
+            fatalError("Error loading model from bundle")
+        }
+        
+        guard let storeFileLocationURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
+            fatalError("Unable to resolve document directory")
+        }
+        let modelFileName = "ArticleModel.sqlite"
+        let concurrencyType = NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType
         
         // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
         guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
