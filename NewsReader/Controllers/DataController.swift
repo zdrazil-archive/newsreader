@@ -42,7 +42,7 @@ class DataController: NSObject {
         }
     }
     
-    func saveContext () throws {
+    func saveContext() {
         if managedObjectContext.hasChanges {
             do {
                 try managedObjectContext.save()
