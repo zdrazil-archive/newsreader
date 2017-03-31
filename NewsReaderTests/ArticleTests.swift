@@ -52,8 +52,5 @@ class ArticleTests: XCTestCase {
         } catch {
             print("Couldn't convert dict to JSON string")
         }
-        
-
     }
 }
-

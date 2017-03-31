@@ -10,8 +10,10 @@ import CoreData
 
 extension ArticleMO {
     
-    class func createArticleMOEntity(article: Article, inManagedObjectContext context: NSManagedObjectContext) -> ArticleMO? {
-        if let articleMO = NSEntityDescription.insertNewObject(forEntityName: "ArticleMO", into: context) as? ArticleMO {
+    class func createArticleMOEntity(article: Article,
+                                     inManagedObjectContext context: NSManagedObjectContext) -> ArticleMO? {
+        if let articleMO = NSEntityDescription.insertNewObject(forEntityName: "ArticleMO",
+                                                               into: context) as? ArticleMO {
             articleMO.author = article.author
             articleMO.title = article.title
             articleMO.articleDescription = article.description

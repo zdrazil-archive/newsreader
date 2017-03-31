@@ -13,7 +13,7 @@ import AlamofireObjectMapper
 
 class ArticlesDownloader: NSObject {
     
-    func downloadArticles(jsonURL: String)  {
+    func downloadArticles(jsonURL: String) {
         Alamofire.request(jsonURL).responseObject { (response: DataResponse<ArticlesResponse>) in
             
             let articlesResponse = response.result.value

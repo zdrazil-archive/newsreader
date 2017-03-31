@@ -20,7 +20,7 @@ class DateExtendedTransform: TransformType {
         }
         return nil
     }
-    
+
     func transformToJSON(_ value: Date?) -> Double? {
         if let date = value {
             return Double(date.timeIntervalSince1970)
