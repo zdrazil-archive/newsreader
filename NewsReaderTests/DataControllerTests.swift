@@ -26,41 +26,8 @@ class DataControllerTests: XCTestCase {
     }
     
     func testCoreDataStackCreated() {
-        guard let modelURL = Bundle.main.url(forResource: "ArticleModel", withExtension: "momd") else {
-            XCTFail("Error loading model from bundle")
-            fatalError("Error loading model from bundle")
-        }
-        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let docURL = urls[urls.endIndex-1]
-        let fileName = "Model.sqlite"
-        do {
-            try _ = DataController(modelURL: modelURL, storeFileLocationURL: docURL, modelFileName: fileName, concurrencyType: .mainQueueConcurrencyType)
-        } catch {
-            XCTFail()
-        }
-    }
-    
-    
-    func testCoreDataSavesContext() {
-        guard let modelURL = Bundle.main.url(forResource: "ArticleModel", withExtension: "momd") else {
-            fatalError("Error loading model from bundle")
-        }
-        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let docURL = urls[urls.endIndex-1]
-        let fileName = "Model.sqlite"
         
-        do {
-            let dataController = try DataController(modelURL: modelURL, storeFileLocationURL: docURL, modelFileName: fileName, concurrencyType: .mainQueueConcurrencyType)
-            do {
-                try dataController.saveContext()
-            } catch {
-                XCTFail()
-            }
-        } catch {
-            XCTFail()
-        }
     }
-    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
