@@ -17,4 +17,10 @@ extension DateFormatter {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return dateFormatter
     }()
+
+    static let AbsoluteTimeFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm dd. MMMM YYYY"
+        return dateFormatter
+    }()
 }
