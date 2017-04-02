@@ -79,4 +79,23 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         self.navigationController?.navigationBar.setStatusBarColor()
         self.navigationController?.navigationBar.setTransparentNavigationBar()
     }
+//
+    @IBAction func share(_ sender: UIBarButtonItem) {
+//        let cell = tableView.headerView(forSection: 0)?.contentView.
+        let sharingItems = [AnyObject]()
+
+//        sharingItems.append(cell.viewData?.title as AnyObject)
+//        sharingItems.append(cell.viewData?.articleURL as AnyObject)
+
+        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.barButtonItem = sender
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+
+}
+
+// MARK: - Preview
+
+// MARK: - Share Button
+extension ArticleTableViewController {
 }
