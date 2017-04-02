@@ -15,18 +15,21 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
         return fetchedResultsController.sections
     }
 
-    private let dataController = (UIApplication.shared.delegate as? AppDelegate)?.dataController
+    private let dataController = DataController() {
+
+    }
+    //    private let dataController = (UIApplication.shared.delegate as? AppDelegate)?.dataController
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
     var delegate: ArticlesDataManagerDelegate?
 
     override init() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Article")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ArticleMO")
         // Sort by date
         let dateSort = NSSortDescriptor(key: "publishedAt", ascending: false)
         request.sortDescriptors = [dateSort]
 
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: (dataController?.managedObjectContext)!, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataController.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
 
         super.init()
 
