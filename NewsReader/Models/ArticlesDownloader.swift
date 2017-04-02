@@ -39,18 +39,18 @@ class ArticlesDownloader: NSObject {
             for article in articles {
                 _ = ArticleMO.createArticleMOEntity(article: article, inManagedObjectContext: privateMOC)
             }
-        }
-        do {
-            try privateMOC.save()
-            moc?.performAndWait {
-                do {
-                    try moc?.save()
-                } catch {
-                    fatalError("Failure to save context: \(error)")
+            do {
+                try privateMOC.save()
+                moc?.performAndWait {
+                    do {
+                        try moc?.save()
+                    } catch {
+                        fatalError("Failure to save context: \(error)")
+                    }
                 }
+            } catch let error {
+                print("Failure to save context: \(error)")
             }
-        } catch let error {
-            print("Failure to save context: \(error)")
         }
     }
 }
