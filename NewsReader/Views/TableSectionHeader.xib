@@ -24,7 +24,7 @@
                             <rect key="frame" x="0.0" y="-38" width="375" height="119.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="q5O-g1-XqN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                             <blurEffect style="light"/>
@@ -91,6 +91,13 @@
                 <constraint firstItem="pOQ-ak-u5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="20" id="mse-C1-eiv"/>
                 <constraint firstItem="pOQ-ak-u5V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="uLW-rJ-KL4"/>
             </constraints>
+            <connections>
+                <outlet property="authorLabel" destination="4nL-Oi-sal" id="hKc-yX-z4q"/>
+                <outlet property="dateLabel" destination="P7f-fV-ENq" id="up8-cG-y7e"/>
+                <outlet property="descriptionLabel" destination="cpj-Ya-zib" id="sAK-WB-VB9"/>
+                <outlet property="imageView" destination="cCn-gz-yZ5" id="Chr-sJ-umO"/>
+                <outlet property="titleLabel" destination="vQw-mA-jx0" id="nba-X4-aEG"/>
+            </connections>
             <point key="canvasLocation" x="-106" y="42"/>
         </view>
     </objects>
