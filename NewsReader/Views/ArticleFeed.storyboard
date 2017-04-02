@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,78 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="V6S-0S-Kg0" customClass="TableSectionHeader" customModule="NewsReader" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ju-9U-mcO">
-                                    <rect key="frame" x="0.0" y="-38" width="375" height="119.5"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="d2s-PZ-Vt5">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </view>
-                                    <blurEffect style="light"/>
-                                </visualEffectView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VuN-ps-5Jh">
-                                    <rect key="frame" x="130" y="8" width="237" height="104"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uar-ta-hbs">
-                                            <rect key="frame" x="0.0" y="0.0" width="30" height="35.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-SG-l7y">
-                                            <rect key="frame" x="0.0" y="35.5" width="237" height="28.5"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0D-bz-VZa" userLabel="Author">
-                                                    <rect key="frame" x="0.0" y="7" width="118.5" height="14.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vsf-Z8-8og" userLabel="Date">
-                                                    <rect key="frame" x="118.5" y="7" width="118.5" height="14.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irL-gX-9Oi" userLabel="Description">
-                                            <rect key="frame" x="0.0" y="64" width="88" height="40"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="cUb-SG-l7y" firstAttribute="leading" secondItem="VuN-ps-5Jh" secondAttribute="leadingMargin" id="CJt-Vq-MkC"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="cUb-SG-l7y" secondAttribute="trailing" id="v1Y-qA-HEA"/>
-                                    </constraints>
-                                </stackView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4gp-iX-JFl">
-                                    <rect key="frame" x="20" y="10" width="100" height="100"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="4gp-iX-JFl" secondAttribute="height" multiplier="1:1" id="jbK-pd-fWn"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="trailingMargin" secondItem="VuN-ps-5Jh" secondAttribute="trailing" id="GMG-3F-5qL"/>
-                                <constraint firstItem="VuN-ps-5Jh" firstAttribute="leading" secondItem="4gp-iX-JFl" secondAttribute="trailing" constant="10" id="GXk-8A-Ta1"/>
-                                <constraint firstItem="4gp-iX-JFl" firstAttribute="top" secondItem="V6S-0S-Kg0" secondAttribute="top" constant="10" id="YBw-rI-igp"/>
-                                <constraint firstAttribute="bottom" secondItem="4gp-iX-JFl" secondAttribute="bottom" constant="10" id="Zg0-xL-JEf"/>
-                                <constraint firstItem="VuN-ps-5Jh" firstAttribute="top" secondItem="V6S-0S-Kg0" secondAttribute="topMargin" id="e2z-xP-bpZ"/>
-                                <constraint firstItem="4gp-iX-JFl" firstAttribute="leading" secondItem="V6S-0S-Kg0" secondAttribute="leading" constant="20" id="it3-x0-GCi"/>
-                                <constraint firstAttribute="bottomMargin" secondItem="VuN-ps-5Jh" secondAttribute="bottom" id="yIo-9c-cDI"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" textLabel="gEf-hI-GqW" detailTextLabel="t0v-NW-DaB" imageView="JbS-2M-13p" style="IBUITableViewCellStyleSubtitle" id="WRq-1x-G0e" customClass="ArticleTableViewCell" customModule="NewsReader" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="148" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WRq-1x-G0e" id="YE6-Ap-GGt">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
