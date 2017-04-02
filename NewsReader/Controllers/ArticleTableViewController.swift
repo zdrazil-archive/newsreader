@@ -14,6 +14,7 @@ class ArticleTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTheme()
 //
 //        UIApplication *app = [UIApplication sharedApplication];
 //        CGFloat statusBarHeight = app.statusBarFrame.size.height;
@@ -109,5 +110,11 @@ class ArticleTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+
+    private func setTheme() {
+        self.navigationController?.navigationBar.setStatusBarColor()
+        self.navigationController?.navigationBar.setTransparentNavigationBar()
+    }
 
 }
