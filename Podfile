@@ -9,7 +9,7 @@ target 'NewsReader' do
   pod 'Alamofire', '~> 4.4'
   pod 'ObjectMapper', '~> 2.2'
   pod 'AlamofireObjectMapper', '~> 4.0'
-
+  pod 'SDWebImage', '~> 4.0'
   target 'NewsReaderTests' do
     inherit! :search_paths
     # Pods for testing
