@@ -17,6 +17,8 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
         articlesDataManager.delegate = self
 
+        let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
         setTheme()
     }
 
