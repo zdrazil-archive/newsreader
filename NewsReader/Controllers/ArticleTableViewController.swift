@@ -15,14 +15,6 @@ class ArticleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTheme()
-//
-//        UIApplication *app = [UIApplication sharedApplication];
-//        CGFloat statusBarHeight = app.statusBarFrame.size.height;
-//
-//        UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -statusBarHeight, [UIScreen mainScreen].bounds.size.width, statusBarHeight)];
-//        statusBarView.backgroundColor = [UIColor yellowColor];
-//        [self.navigationController.navigationBar addSubview:statusBarView];
-
       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
