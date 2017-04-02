@@ -10,8 +10,6 @@ import UIKit
 
 class ArticleTableViewController: UITableViewController, ArticlesDataManagerDelegate {
 
-    let articles = ["ABC", "CDE", "EFG"]
-
     private let articlesDataManager = ArticlesDataManager()
 
     override func viewDidLoad() {
@@ -42,10 +40,8 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleTableViewCell
-        let article = articlesDataManager.objectAt(at: indexPath) as! Article
-
+        let article = articlesDataManager.objectAt(at: indexPath) as! ArticleMO
         cell.viewData = ArticleTableViewCell.ViewData(article: article)
 
         return cell

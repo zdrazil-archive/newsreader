@@ -8,6 +8,7 @@
 
 import CoreData
 import UIKit
+import Foundation
 
 class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
 
@@ -15,22 +16,24 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
         return fetchedResultsController.sections
     }
 
-    private let dataController = DataController() {
-        
-    }
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
     var delegate: ArticlesDataManagerDelegate?
 
     override init() {
+        super.init()
+
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ArticleMO")
         // Sort by date
         let dateSort = NSSortDescriptor(key: "publishedAt", ascending: false)
         request.sortDescriptors = [dateSort]
 
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataController.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let dataControllerCore = DataController() {
 
-        super.init()
+        }
+
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataControllerCore.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+
 
         fetchedResultsController.delegate = self
 
