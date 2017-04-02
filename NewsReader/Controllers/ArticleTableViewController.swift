@@ -114,6 +114,14 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     }
     */
 
+    func dataManagerWillChangeContent(dataManager: ArticlesDataManager) {
+        tableView.beginUpdates()
+    }
+
+    func dataManagerDidChangeContent(dataManager: ArticlesDataManager) {
+        tableView.endUpdates()
+    }
+
 
     private func setTheme() {
         self.navigationController?.navigationBar.setStatusBarColor()
