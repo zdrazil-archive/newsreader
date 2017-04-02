@@ -1,5 +1,5 @@
 //
-//  NavigationController+Extension.swift
+//  UINavigationBar+Theme.swift
 //  NewsReader
 //
 //  Created by Vladimír Zdražil on 02/04/2017.
@@ -8,20 +8,20 @@
 
 import UIKit
 
-extension UINavigationController {
+extension UINavigationBar {
 
     // Set background color of status bar
     func setStatusBarColor(color: UIColor) {
         let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
         let statusBarView = UIView.init(frame: CGRect(x: 0, y: -statusBarHeight, width: UIScreen.main.bounds.size.width, height: statusBarHeight))
         statusBarView.backgroundColor = UIColor.black
-        self.navigationBar.addSubview(statusBarView)
+        self.addSubview(statusBarView)
     }
 
     // Set transparent navigation bar
     func setTransparentNavigationBar() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.isTranslucent = true
+       self.setBackgroundImage(UIImage(), for: .default)
+       self.shadowImage = UIImage()
+       self.isTranslucent = true
     }
 }
