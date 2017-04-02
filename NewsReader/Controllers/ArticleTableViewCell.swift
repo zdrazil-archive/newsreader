@@ -7,28 +7,30 @@
 //
 
 import UIKit
-import sd
+import SDWebImage
 
 class ArticleTableViewCell: UITableViewCell {
     struct ViewData {
-        let title: String
-        let dateString: String
-        let image: UIImage
+        let title: String?
+        let dateString: String?
+        let imageURL: URL?
     }
 
     var viewData: ViewData? {
         didSet {
             textLabel?.text = viewData?.title
             detailTextLabel?.text = viewData?.dateString
-            imageView.
+            self.imageView?.sd_setShowActivityIndicatorView(true)
+            self.imageView?.sd_setIndicatorStyle(.gray)
+            self.imageView?.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
         }
     }
 }
 
 extension ArticleTableViewCell.ViewData {
-    init(article: Article) {
+    init(article: ArticleMO) {
         self.title = article.title!
-        self.dateString = RelativeTimeDateFormatter().stringForDate(date: article.publishedAt!)
-        self.image =
+        self.dateString = RelativeTimeDateFormatter().stringForDate(date: article.publishedAt! as Date)
+        self.imageURL = URL(string: article.imageURL!)
     }
 }
