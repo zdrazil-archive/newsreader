@@ -16,9 +16,8 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
     }
 
     private let dataController = DataController() {
-
+        
     }
-    //    private let dataController = (UIApplication.shared.delegate as? AppDelegate)?.dataController
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
     var delegate: ArticlesDataManagerDelegate?
