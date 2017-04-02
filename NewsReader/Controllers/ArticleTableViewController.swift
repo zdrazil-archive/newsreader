@@ -49,12 +49,10 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleTableViewCell
+        let article = articlesDataManager.objectAt(at: indexPath) as! Article
 
-        let article = articlesDataManager.objectAt(at: indexPath) as? ArticleMO
-
-        cell.textLabel?.text = article?.title
-        cell.detailTextLabel?.text = getRelativeDate(date: (article?.publishedAt)! as Date)
+        cell.viewData = ArticleTableViewCell.ViewData(article: article)
 
         return cell
     }
@@ -126,10 +124,5 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     private func setTheme() {
         self.navigationController?.navigationBar.setStatusBarColor()
         self.navigationController?.navigationBar.setTransparentNavigationBar()
-    }
-
-    private func getRelativeDate(date: Date) -> String {
-        let relativeTimeDateFormmater = RelativeTimeDateFormatter()
-        return relativeTimeDateFormmater.stringForDate(date: date)
     }
 }
