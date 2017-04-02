@@ -128,4 +128,8 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         self.navigationController?.navigationBar.setTransparentNavigationBar()
     }
 
+    private func getRelativeDate(date: Date) -> String {
+        let relativeTimeDateFormmater = RelativeTimeDateFormatter()
+        return relativeTimeDateFormmater.stringForDate(date: date)
+    }
 }
