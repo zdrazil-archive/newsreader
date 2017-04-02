@@ -8,12 +8,17 @@
 
 import UIKit
 
-class ArticleTableViewController: UITableViewController {
+class ArticleTableViewController: UITableViewController, ArticlesDataManagerDelegate {
 
     let articles = ["ABC", "CDE", "EFG"]
 
+    private let articlesDataManager = ArticlesDataManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        articlesDataManager.delegate = self
+
         setTheme()
       
         // Uncomment the following line to preserve selection between presentations
@@ -31,19 +36,25 @@ class ArticleTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return (articlesDataManager.articleSections?.count)!
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
+        guard let sections = articlesDataManager.articleSections else {
+            fatalError("No sections in fetchedResultsController")
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath)
-        cell.textLabel?.text = "ABC"
-        cell.detailTextLabel?.text = "Ahoj"
+
+        let article = articlesDataManager.objectAt(at: indexPath) as? ArticleMO
+
+        cell.textLabel?.text = article?.title
+        cell.detailTextLabel?.text = getRelativeDate(date: (article?.publishedAt)! as Date)
 
         return cell
     }
