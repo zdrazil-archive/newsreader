@@ -17,10 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Initialize Core Data Stack
-        dataController = DataController {
-        UIApplication.shared.statusBarStyle = .lightContent
+        dataController = DataController() {
         }
-//        UIApplication.shared.Navi
+        UIApplication.shared.statusBarStyle = .lightContent
         
         return true
     }
