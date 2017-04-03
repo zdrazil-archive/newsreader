@@ -128,6 +128,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7E2C5DBB1E92359100FDA09F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				7EF260E41E90F8C4001A0F70 /* ArticlesDataManager.swift */,
+				7ECC0C691E8ACE6000C42FCA /* DataController.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		7E2C5DBC1E9235D600FDA09F /* ArticleTableView */ = {
+			isa = PBXGroup;
+			children = (
+				7E826EFF1E912A30000CA07C /* HeaderTableViewCell.swift */,
+				7E7332111E916EF60023F995 /* TableSectionHeader.swift */,
+				7EF260E61E9119E1001A0F70 /* ArticleTableViewCell.swift */,
+			);
+			name = ArticleTableView;
+			sourceTree = "<group>";
+		};
 		7E43BF131E8AC2CE00AE53C8 = {
 			isa = PBXGroup;
 			children = (
@@ -178,11 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				7ED0DFAA1E8F94FF0079B6B5 /* ArticleTableViewController.swift */,
-				7E826EFF1E912A30000CA07C /* HeaderTableViewCell.swift */,
-				7ECC0C691E8ACE6000C42FCA /* DataController.swift */,
-				7EF260E41E90F8C4001A0F70 /* ArticlesDataManager.swift */,
-				7E7332111E916EF60023F995 /* TableSectionHeader.swift */,
-				7EF260E61E9119E1001A0F70 /* ArticleTableViewCell.swift */,
+				7E2C5DBC1E9235D600FDA09F /* ArticleTableView */,
+				7E2C5DBB1E92359100FDA09F /* Core Data */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
