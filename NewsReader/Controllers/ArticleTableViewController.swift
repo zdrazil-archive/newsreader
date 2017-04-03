@@ -53,9 +53,6 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
-        let header = cell as! TableSectionHeader
-        header.titleLabel.text = "Ahoj"
-
         return cell
     }
 
@@ -66,9 +63,8 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = self.tableView.headerView(forSection: 0)
         let header = cell as! TableSectionHeader
-        header.titleLabel.text = "Test"
-//        let article = articlesDataManager.objectAt(at: indexPath) as! ArticleMO
-
+        let article = articlesDataManager.objectAt(at: indexPath) as! ArticleMO
+        header.viewData = TableSectionHeader.ViewData(article: article)
     }
 
     func dataManagerWillChangeContent(dataManager: ArticlesDataManager) {

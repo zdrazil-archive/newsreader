@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TableSectionHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,8 +27,11 @@ class TableSectionHeader: UITableViewHeaderFooterView {
 
     var viewData: ViewData? {
         didSet {
-            textLabel?.text = viewData?.title
-            detailTextLabel?.text = viewData?.dateString
+            self.titleLabel.text = viewData?.title
+            self.authorLabel.text = viewData?.author
+            self.dateLabel.text = viewData?.dateString
+            self.descriptionLabel.text = viewData?.description
+            
             self.imageView?.sd_setShowActivityIndicatorView(true)
             self.imageView?.sd_setIndicatorStyle(.gray)
             self.imageView?.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
@@ -36,13 +40,13 @@ class TableSectionHeader: UITableViewHeaderFooterView {
 }
 
 extension TableSectionHeader.ViewData {
-    init(article: Article) {
+    init(article: ArticleMO) {
         self.title = article.title!
-        self.dateString = DateFormatter.AbsoluteTimeFormatter.string(from: article.publishedAt!)
-        self.imageURL = article.imageURL
-        self.articleURL = article.url
+        self.dateString = RelativeTimeDateFormatter().stringForDate(date: article.publishedAt! as Date)
+        self.imageURL = URL(string: article.imageURL!)
+        self.articleURL = URL(string: article.url!)
         self.author = article.author
-        self.description = article.description
+        self.description = article.articleDescription
     }
 }
 
