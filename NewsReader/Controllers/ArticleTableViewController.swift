@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ArticleTableViewController: UITableViewController, ArticlesDataManagerDelegate {
 
@@ -53,6 +54,10 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
+        let header = cell as! TableSectionHeader
+        header.headerView.addGestureRecognizer(tap)
         return cell
     }
 
@@ -80,6 +85,24 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         self.navigationController?.navigationBar.setTransparentNavigationBar()
     }
 
+    private func addHeaderGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
+        let header = self.tableView.headerView(forSection: 0)
+        header?.addGestureRecognizer(tap)
+    }
+
+    // MARK: - Preview Link
+    // Manage tapping on article preview
+    @objc fileprivate func tapPreview(sender: UITapGestureRecognizer) {
+        showArticle()
+    }
+
+    // Open article in a SFSafariViewController
+    fileprivate func showArticle() {
+        let header = self.tableView.headerView(forSection: 0) as! TableSectionHeader
+        let vc = SFSafariViewController(url: (header.viewData?.articleURL)!)
+        present(vc, animated: true)
+    }
 
 	// MARK: - Share Button
     @IBAction func share(_ sender: UIBarButtonItem) {
@@ -94,5 +117,3 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         self.present(activityViewController, animated: true, completion: nil)
     }
 }
-
-// MARK: - Preview

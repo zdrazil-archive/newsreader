@@ -23,7 +23,7 @@
                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2O1-6z-RVM">
                             <rect key="frame" x="0.0" y="0.5" width="375" height="119.5"/>
                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="q5O-g1-XqN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                             <blurEffect style="prominent"/>
@@ -109,6 +109,7 @@
                 <outlet property="authorLabel" destination="4nL-Oi-sal" id="hKc-yX-z4q"/>
                 <outlet property="dateLabel" destination="P7f-fV-ENq" id="up8-cG-y7e"/>
                 <outlet property="descriptionLabel" destination="cpj-Ya-zib" id="sAK-WB-VB9"/>
+                <outlet property="headerView" destination="pOQ-ak-u5V" id="HBA-C4-TlN"/>
                 <outlet property="imageView" destination="cCn-gz-yZ5" id="Chr-sJ-umO"/>
                 <outlet property="titleLabel" destination="vQw-mA-jx0" id="nba-X4-aEG"/>
             </connections>

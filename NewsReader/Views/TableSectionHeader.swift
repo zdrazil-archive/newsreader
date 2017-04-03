@@ -15,6 +15,7 @@ class TableSectionHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var headerView: UIView!
 
     struct ViewData {
         let title: String?
@@ -31,7 +32,7 @@ class TableSectionHeader: UITableViewHeaderFooterView {
             self.authorLabel.text = viewData?.author
             self.dateLabel.text = viewData?.dateString
             self.descriptionLabel.text = viewData?.description
-            
+
             self.imageView?.sd_setShowActivityIndicatorView(true)
             self.imageView?.sd_setIndicatorStyle(.gray)
             self.imageView?.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
