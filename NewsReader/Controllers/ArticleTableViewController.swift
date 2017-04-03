@@ -14,7 +14,9 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let stringURL = "http://testing.vladimirzdrazil.com/techcrunch.json"
+        let articlesDownloader = ArticlesDownloader()
+        articlesDownloader.downloadArticles(jsonURL: stringURL)
         articlesDataManager.delegate = self
 
         let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
