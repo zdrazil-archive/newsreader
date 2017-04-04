@@ -38,6 +38,16 @@
                ReferencedContainer = "container:NewsReader.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7E8D444D1E93DB67008C309C"
+               BuildableName = "NewsReaderUITests.xctest"
+               BlueprintName = "NewsReaderUITests"
+               ReferencedContainer = "container:NewsReader.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
