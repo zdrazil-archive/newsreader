@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SafariServices
 
 class ArticleTableViewController: UITableViewController, ArticlesDataManagerDelegate {
 
@@ -127,7 +126,7 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         guard let url = previewSection.viewData?.articleURL else {
             return
         }
-        let vc = SFSafariViewController(url: url)
+        let vc = PreviewViewer.getSFSafariViewController(url: url)
         present(vc, animated: true)
     }
     
