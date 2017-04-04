@@ -91,7 +91,8 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     }
 
     private func setTheme() {
-        self.navigationController?.navigationBar.setStatusBarColor()
+        let navigationBar = self.navigationController?.navigationBar
+        navigationBar?.setStatusBarColor()
 //        self.navigationController?.navigationBar.setTransparentNavigationBar()
     }
     
