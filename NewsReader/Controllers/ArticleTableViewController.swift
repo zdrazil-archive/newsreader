@@ -76,7 +76,7 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
       }
     
     private func showArticleInHeader(atIndexPath: IndexPath) {
-        let cell = self.tableView.headerView(forSection: 0)
+        let cell = getHeaderSection()
         let header = cell as! TableSectionHeader
         let article = articlesDataManager.objectAt(at: atIndexPath) as! ArticleMO
         header.viewData = TableSectionHeader.ViewData(article: article)
@@ -108,7 +108,7 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     private func addHeaderGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
-        let header = self.tableView.headerView(forSection: 0)
+        let header = getHeaderSection()
         header?.addGestureRecognizer(tap)
     }
     
@@ -120,24 +120,39 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     // Open article in a SFSafariViewController
     fileprivate func showArticle() {
-        let header = self.tableView.headerView(forSection: 0) as! TableSectionHeader
-        guard let url = header.viewData?.articleURL else {
+        guard let headerURL = getHeaderURL() else {
             return
         }
-        let vc = SFSafariViewController(url: url)
+        let vc = SFSafariViewController(url: headerURL)
         present(vc, animated: true)
+    }
+    
+    private func getHeaderURL() -> URL? {
+        let header = getHeaderSection() as! TableSectionHeader
+        return header.viewData?.articleURL
+    }
+    
+    private func getHeaderSection() -> UITableViewHeaderFooterView? {
+        return self.tableView.headerView(forSection: 0)
     }
 
 	// MARK: - Share Button
     @IBAction func share(_ sender: UIBarButtonItem) {
-        let header = tableView.headerView(forSection: 0) as! TableSectionHeader
-        var sharingItems = [AnyObject]()
-
-        sharingItems.append(header.viewData?.title as AnyObject)
-        sharingItems.append(header.viewData?.articleURL as AnyObject)
-
-        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+        showSharePopUp(sender: sender)
+    }
+    
+    private func showSharePopUp(sender: UIBarButtonItem) {
+        let activityViewController = UIActivityViewController(activityItems: getSharingItems(), applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
         self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    private func getSharingItems() -> [AnyObject] {
+        let header = getHeaderSection() as! TableSectionHeader
+        
+        var sharingItems = [AnyObject]()
+        sharingItems.append(header.viewData?.title as AnyObject)
+        sharingItems.append(header.viewData?.articleURL as AnyObject)
+        return sharingItems
     }
 }
