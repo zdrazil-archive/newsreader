@@ -1,0 +1,6 @@
+framework module Pods_NewsReaderUITests {
+  umbrella header "Pods-NewsReaderUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
