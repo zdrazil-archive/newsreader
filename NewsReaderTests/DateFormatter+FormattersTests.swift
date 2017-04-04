@@ -1,5 +1,5 @@
 //
-//  RelativeTimeDateFormatterTests.swift
+//  DateFormatter+FormattersTests.swift
 //  NewsReader
 //
 //  Created by Vladimír Zdražil on 02/04/2017.
@@ -12,11 +12,11 @@ import XCTest
 class RelativeTimeDateFormatterTests: XCTestCase {
     let calendar = Calendar.current
     let baseDate = Date(timeIntervalSinceNow: 0)
-    var dateFormatter: RelativeTimeDateFormatter!
+    var dateFormatter: DateFormatter!
 
     override func setUp() {
         super.setUp()
-        dateFormatter = RelativeTimeDateFormatter()
+        dateFormatter = DateFormatter.RelativeTimeFormatter
     }
     
     override func tearDown() {
@@ -26,12 +26,14 @@ class RelativeTimeDateFormatterTests: XCTestCase {
 
     func testTodayDate() {
         let testDate = calendar.date(byAdding: .hour, value: 1, to: baseDate)!
-        XCTAssertEqual(dateFormatter.stringForDate(date: testDate), "Today")
+        let relativeTime = dateFormatter.string(from: testDate)
+        XCTAssertEqual(relativeTime, "Today")
     }
 
     func testYesterdayDate() {
         let testDate = calendar.date(byAdding: .day, value: -1, to: baseDate)!
-        XCTAssertEqual(dateFormatter.stringForDate(date: testDate), "Yesterday")
+        let relativeTime = dateFormatter.string(from: testDate)
+        XCTAssertEqual(relativeTime, "Yesterday")
     }
 
     func testPerformanceExample() {
