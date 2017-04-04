@@ -12,6 +12,12 @@ import SafariServices
 class ArticleTableViewController: UITableViewController, ArticlesDataManagerDelegate {
 
     private let articlesDataManager = ArticlesDataManager()
+    
+    private var previewSection: TableSectionHeader {
+        get {
+            return self.tableView.headerView(forSection: 0) as! TableSectionHeader
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,10 +82,8 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
       }
     
     private func showArticleInHeader(atIndexPath: IndexPath) {
-        let cell = getHeaderSection()
-        let header = cell as! TableSectionHeader
         let article = articlesDataManager.objectAt(at: atIndexPath) as! ArticleMO
-        header.viewData = TableSectionHeader.ViewData(article: article)
+        previewSection.viewData = TableSectionHeader.ViewData(article: article)
     }
 
     func dataManagerWillChangeContent(dataManager: ArticlesDataManager) {
@@ -109,8 +113,7 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     private func addHeaderGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
-        let header = getHeaderSection()
-        header?.addGestureRecognizer(tap)
+        previewSection.addGestureRecognizer(tap)
     }
     
     // MARK: - Preview Link
@@ -121,37 +124,23 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     // Open article in a SFSafariViewController
     fileprivate func showArticle() {
-        guard let headerURL = getHeaderURL() else {
+        guard let url = previewSection.viewData?.articleURL else {
             return
         }
-        let vc = SFSafariViewController(url: headerURL)
+        let vc = SFSafariViewController(url: url)
         present(vc, animated: true)
     }
     
-    private func getHeaderURL() -> URL? {
-        let header = getHeaderSection() as! TableSectionHeader
-        return header.viewData?.articleURL
-    }
-    
-    private func getHeaderSection() -> UITableViewHeaderFooterView? {
-        return self.tableView.headerView(forSection: 0)
-    }
-
 	// MARK: - Share Button
     @IBAction func share(_ sender: UIBarButtonItem) {
         presentShareActivity(sender: sender)
     }
     
     private func presentShareActivity(sender: UIBarButtonItem) {
-        let header = getHeaderSection() as! TableSectionHeader
-        let sharePopUp = SharePopOver(sender: sender, header: header)
+        let sharePopUp = SharePopOver(sender: sender, header: previewSection)
         guard let activityViewController = sharePopUp.activityViewController else {
             return
         }
         self.present(activityViewController, animated: true, completion: nil)
     }
-    
-   
-    
-   
 }
