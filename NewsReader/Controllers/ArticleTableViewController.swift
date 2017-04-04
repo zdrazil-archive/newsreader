@@ -102,7 +102,10 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     // Open article in a SFSafariViewController
     fileprivate func showArticle() {
         let header = self.tableView.headerView(forSection: 0) as! TableSectionHeader
-        let vc = SFSafariViewController(url: (header.viewData?.articleURL)!)
+        guard let url = header.viewData?.articleURL else {
+            return
+        }
+        let vc = SFSafariViewController(url: url)
         present(vc, animated: true)
     }
 
