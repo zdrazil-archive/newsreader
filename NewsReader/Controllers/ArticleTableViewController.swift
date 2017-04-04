@@ -139,21 +139,19 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
 	// MARK: - Share Button
     @IBAction func share(_ sender: UIBarButtonItem) {
-        showSharePopUp(sender: sender)
+        presentShareActivity(sender: sender)
     }
     
-    private func showSharePopUp(sender: UIBarButtonItem) {
-        let activityViewController = UIActivityViewController(activityItems: getSharingItems(), applicationActivities: nil)
-        activityViewController.popoverPresentationController?.barButtonItem = sender
+    private func presentShareActivity(sender: UIBarButtonItem) {
+        let header = getHeaderSection() as! TableSectionHeader
+        let sharePopUp = SharePopOver(sender: sender, header: header)
+        guard let activityViewController = sharePopUp.activityViewController else {
+            return
+        }
         self.present(activityViewController, animated: true, completion: nil)
     }
     
-    private func getSharingItems() -> [AnyObject] {
-        let header = getHeaderSection() as! TableSectionHeader
-        
-        var sharingItems = [AnyObject]()
-        sharingItems.append(header.viewData?.title as AnyObject)
-        sharingItems.append(header.viewData?.articleURL as AnyObject)
-        return sharingItems
-    }
+   
+    
+   
 }
