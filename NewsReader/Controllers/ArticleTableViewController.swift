@@ -58,6 +58,8 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
         let header = cell as! TableSectionHeader
         header.headerView.addGestureRecognizer(tap)
+
+        cell?.contentView.backgroundColor = UIColor.white
         return cell
     }
 
@@ -82,7 +84,7 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     private func setTheme() {
         self.navigationController?.navigationBar.setStatusBarColor()
-        self.navigationController?.navigationBar.setTransparentNavigationBar()
+//        self.navigationController?.navigationBar.setTransparentNavigationBar()
     }
 
     private func addHeaderGestureRecognizer() {
