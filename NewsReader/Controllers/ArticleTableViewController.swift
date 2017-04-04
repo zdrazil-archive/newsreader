@@ -15,13 +15,11 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let stringURL = "http://testing.vladimirzdrazil.com/techcrunch.json"
-        let articlesDownloader = ArticlesDownloader()
-        articlesDownloader.downloadArticles(jsonURL: stringURL)
+      
         articlesDataManager.delegate = self
 
-        let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
-        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
+        downloadArticles()
+        registerTableSectionHeader()
         setTheme()
     }
 
@@ -54,13 +52,19 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
-
+        addGestureRecognizerToHeaderView(cell: cell!)
+        setHeaderViewStyle(cell: cell)
+        return cell
+    }
+    
+    private func addGestureRecognizerToHeaderView(cell: UITableViewHeaderFooterView) {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
         let header = cell as! TableSectionHeader
         header.headerView.addGestureRecognizer(tap)
-
+    }
+    
+    private func setHeaderViewStyle(cell: UITableViewHeaderFooterView?) {
         cell?.contentView.backgroundColor = UIColor.white
-        return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -68,9 +72,13 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showArticleInHeader(atIndexPath: indexPath)
+      }
+    
+    private func showArticleInHeader(atIndexPath: IndexPath) {
         let cell = self.tableView.headerView(forSection: 0)
         let header = cell as! TableSectionHeader
-        let article = articlesDataManager.objectAt(at: indexPath) as! ArticleMO
+        let article = articlesDataManager.objectAt(at: atIndexPath) as! ArticleMO
         header.viewData = TableSectionHeader.ViewData(article: article)
     }
 
@@ -86,13 +94,24 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         self.navigationController?.navigationBar.setStatusBarColor()
 //        self.navigationController?.navigationBar.setTransparentNavigationBar()
     }
+    
+    private func downloadArticles() {
+        let stringURL = "http://testing.vladimirzdrazil.com/techcrunch.json"
+        let articlesDownloader = ArticlesDownloader()
+        articlesDownloader.downloadArticles(jsonURL: stringURL)
+    }
+    
+    private func registerTableSectionHeader() {
+        let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
+    }
 
     private func addHeaderGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
         let header = self.tableView.headerView(forSection: 0)
         header?.addGestureRecognizer(tap)
     }
-
+    
     // MARK: - Preview Link
     // Manage tapping on article preview
     @objc fileprivate func tapPreview(sender: UITapGestureRecognizer) {
