@@ -12,14 +12,21 @@ import SDWebImage
 class ArticleTableViewCell: UITableViewCell {
     struct ViewData {
         let title: String?
-        let dateString: String?
+        let publishedAt: Date?
         let imageURL: URL?
+
+        var publishedAtString: String? {
+            get {
+                let dateFormatter = DateFormatter.RelativeTimeFormatter
+                return dateFormatter.unwrappedString(from: publishedAt)
+            }
+        }
     }
 
     var viewData: ViewData? {
         didSet {
             textLabel?.text = viewData?.title
-            detailTextLabel?.text = viewData?.dateString
+            detailTextLabel?.text = viewData?.publishedAtString
             self.imageView?.sd_setShowActivityIndicatorView(true)
             self.imageView?.sd_setIndicatorStyle(.gray)
             self.imageView?.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
@@ -30,15 +37,7 @@ class ArticleTableViewCell: UITableViewCell {
 extension ArticleTableViewCell.ViewData {
     init(article: ArticleMO) {
         self.title = article.title
-        
-        let dateFormatter = DateFormatter.RelativeTimeFormatter
-        if let publishedAt = article.publishedAt {
-            self.dateString = dateFormatter.string(from:publishedAt as Date)
-        } else {
-            self.dateString = nil
-        }
-
+        self.publishedAt = article.publishedAt as Date?
         self.imageURL = article.imageURL
-        
     }
 }

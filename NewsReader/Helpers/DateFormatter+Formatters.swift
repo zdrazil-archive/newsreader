@@ -30,4 +30,12 @@ extension DateFormatter {
         dateFormatter.doesRelativeDateFormatting = true
         return dateFormatter
     }()
+
+    func unwrappedString(from date: Date?) -> String? {
+        if let date = date {
+            return self.string(from: date)
+        } else {
+            return nil
+        }
+    }
 }

@@ -19,18 +19,25 @@ class TableSectionHeader: UITableViewHeaderFooterView {
 
     struct ViewData {
         let title: String?
-        let dateString: String?
+        let publishedAt: Date?
         let imageURL: URL?
         let articleURL: URL?
         let author: String?
         let description: String?
+
+        var publishedAtString: String? {
+            get {
+                let dateFormatter = DateFormatter.RelativeTimeFormatter
+                return dateFormatter.unwrappedString(from: publishedAt)
+            }
+        }
     }
 
     var viewData: ViewData? {
         didSet {
             self.titleLabel.text = viewData?.title
             self.authorLabel.text = viewData?.author
-            self.dateLabel.text = viewData?.dateString
+            self.dateLabel.text = viewData?.publishedAtString
             self.descriptionLabel.text = viewData?.description
 
             self.imageView?.sd_setShowActivityIndicatorView(true)
@@ -42,18 +49,10 @@ class TableSectionHeader: UITableViewHeaderFooterView {
 
 extension TableSectionHeader.ViewData {
     init(article: ArticleMO) {
-        self.title = article.title ?? nil
-        
-        let dateFormatter = DateFormatter.RelativeTimeFormatter
-        if let publishedAt = article.publishedAt {
-            self.dateString = dateFormatter.string(from: publishedAt as Date)
-        } else {
-            self.dateString = nil
-        }
-
+        self.title = article.title
+        self.publishedAt = article.publishedAt as Date?
         self.imageURL = article.imageURL
         self.articleURL = article.url
-
         self.author = article.author
         self.description = article.articleDescription
     }
