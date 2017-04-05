@@ -29,9 +29,19 @@ class ArticleTableViewCell: UITableViewCell {
 
 extension ArticleTableViewCell.ViewData {
     init(article: ArticleMO) {
-        self.title = article.title!
+        self.title = article.title
         let dateFormatter = DateFormatter.RelativeTimeFormatter
-        self.dateString = dateFormatter.string(from: article.publishedAt! as Date)
-        self.imageURL = URL(string: article.imageURL!)
+        
+        if let publishedAt = article.publishedAt {
+           self.dateString = dateFormatter.string(from:publishedAt as Date)
+        } else {
+            self.dateString = nil
+        }
+        
+        if let imageURL = article.imageURL {
+            self.imageURL = URL(string: imageURL)
+        } else {
+            self.imageURL = nil
+        }
     }
 }

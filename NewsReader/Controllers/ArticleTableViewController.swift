@@ -36,7 +36,7 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return (articlesDataManager.articleSections?.count)!
+        return articlesDataManager.articleSections?.count ?? 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,12 +57,12 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
-        addGestureRecognizerToHeaderView(cell: cell!)
+        addGestureRecognizerToHeaderView(cell: cell)
         setHeaderViewStyle(cell: cell)
         return cell
     }
     
-    private func addGestureRecognizerToHeaderView(cell: UITableViewHeaderFooterView) {
+    private func addGestureRecognizerToHeaderView(cell: UITableViewHeaderFooterView?) {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
         let header = cell as! TableSectionHeader
         header.headerView.addGestureRecognizer(tap)
