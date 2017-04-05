@@ -49,6 +49,42 @@ class RelativeTimeDateFormatterTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }
 
+class AbsoluteTimeDateFormatterTests: XCTestCase {
+    var dateFormatter: DateFormatter!
+
+    override func setUp() {
+        super.setUp()
+        dateFormatter = DateFormatter.AbsoluteTimeFormatter
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    func testSpecificDate() {
+        let testDate = Date(timeIntervalSinceReferenceDate: -123456789.0)
+        let absoluteTime = dateFormatter.string(from: testDate)
+        XCTAssertEqual(absoluteTime, "03:26 02. February 1997")
+    }
+}
+
+class ISO8601FormatterTests: XCTestCase {
+    var dateFormatter: DateFormatter!
+
+    override func setUp() {
+        super.setUp()
+        dateFormatter = DateFormatter.ISO8601Formatter
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    func testSpecificDate() {
+        let testDate = Date(timeIntervalSinceReferenceDate: -123456789.0)
+        let absoluteTime = dateFormatter.string(from: testDate)
+        XCTAssertEqual(absoluteTime, "1997-02-02T02:26:51+0000")
+    }
+}
