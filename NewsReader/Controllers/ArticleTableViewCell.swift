@@ -30,18 +30,15 @@ class ArticleTableViewCell: UITableViewCell {
 extension ArticleTableViewCell.ViewData {
     init(article: ArticleMO) {
         self.title = article.title
-        let dateFormatter = DateFormatter.RelativeTimeFormatter
         
+        let dateFormatter = DateFormatter.RelativeTimeFormatter
         if let publishedAt = article.publishedAt {
-           self.dateString = dateFormatter.string(from:publishedAt as Date)
+            self.dateString = dateFormatter.string(from:publishedAt as Date)
         } else {
             self.dateString = nil
         }
+
+        self.imageURL = article.imageURL
         
-        if let imageURL = article.imageURL {
-            self.imageURL = URL(string: imageURL)
-        } else {
-            self.imageURL = nil
-        }
     }
 }

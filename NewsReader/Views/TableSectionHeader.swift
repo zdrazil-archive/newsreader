@@ -43,25 +43,16 @@ class TableSectionHeader: UITableViewHeaderFooterView {
 extension TableSectionHeader.ViewData {
     init(article: ArticleMO) {
         self.title = article.title ?? nil
-        let dateFormatter = DateFormatter.RelativeTimeFormatter
         
+        let dateFormatter = DateFormatter.RelativeTimeFormatter
         if let publishedAt = article.publishedAt {
             self.dateString = dateFormatter.string(from: publishedAt as Date)
         } else {
             self.dateString = nil
         }
-        
-        if let imageURL = article.imageURL {
-            self.imageURL = URL(string: imageURL)
-        } else {
-            self.imageURL = nil
-        }
-        
-        if let articleURL = article.url {
-            self.articleURL = URL(string: articleURL)
-        } else {
-            self.articleURL = nil
-        }
+
+        self.imageURL = article.imageURL
+        self.articleURL = article.url
 
         self.author = article.author
         self.description = article.articleDescription
