@@ -3,10 +3,10 @@
     <entity name="ArticleMO" representedClassName="ArticleMO" syncable="YES" codeGenerationType="class">
         <attribute name="articleDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="publishedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rawImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="ArticleMO" positionX="-63" positionY="-18" width="128" height="135"/>
