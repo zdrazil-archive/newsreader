@@ -24,7 +24,7 @@ struct Article: Mappable {
         description <- map["description"]
         author      <- map["author"]
         imageURL    <- (map["urlToImage"], URLTransform())
-        publishedAt <- (map["publishedAt"], DateExtendedTransform())
+        publishedAt <- (map["publishedAt"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ssZ"))
         title       <- map["title"]
         url         <- (map["url"], URLTransform())
     }
