@@ -7,6 +7,11 @@
         <attribute name="rawImageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rawURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="rawURL"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="ArticleMO" positionX="-63" positionY="-18" width="128" height="135"/>

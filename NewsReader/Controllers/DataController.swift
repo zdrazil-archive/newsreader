@@ -28,6 +28,8 @@ class DataController: NSObject {
         managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = psc
 
+        managedObjectContext.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
+
         guard let docURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             fatalError("Unable to resolve document directory")
         }
