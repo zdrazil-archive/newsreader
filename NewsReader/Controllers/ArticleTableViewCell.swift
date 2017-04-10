@@ -32,6 +32,15 @@ class ArticleTableViewCell: UITableViewCell {
             self.imageView?.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
         }
     }
+    
+    // Prevent loading wrong image in reused cells, eq. when scrolling
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // Cancel pending download request
+        self.imageView?.sd_cancelCurrentAnimationImagesLoad()
+        // Clear out reused image
+        self.imageView?.image = nil
+    }
 }
 
 extension ArticleTableViewCell.ViewData {
@@ -41,3 +50,4 @@ extension ArticleTableViewCell.ViewData {
         self.imageURL = article.imageURL
     }
 }
+
