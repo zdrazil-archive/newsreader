@@ -34,7 +34,8 @@ class ArticleTableViewControllerTests: XCTestCase {
     }
 
     func testTableViewUsesCustomCell() {
-        let firstCell = systemUnderTest.tableView(systemUnderTest.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+        let firstCell = systemUnderTest.tableView(systemUnderTest.tableView,
+                                                  cellForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(firstCell is ArticleTableViewCell)
     }
 
@@ -44,5 +45,6 @@ class ArticleTableViewControllerTests: XCTestCase {
     }
 
     override func tearDown() {
+        super.tearDown()
     }
 }

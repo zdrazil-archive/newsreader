@@ -13,8 +13,6 @@ class ArticleMOTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-
-
     }
 
     override func tearDown() {
@@ -32,7 +30,9 @@ class ArticleMOTests: XCTestCase {
             return
         }
 
-        guard let articleMO = ArticleMO.createArticleMOEntity(article: article, inManagedObjectContext: managedObjectContext) else {
+        let articleMOOpt = ArticleMO.createArticleMOEntity(article: article,
+                                                        inManagedObjectContext: managedObjectContext)
+        guard let articleMO = articleMOOpt else {
             XCTFail()
             return
         }

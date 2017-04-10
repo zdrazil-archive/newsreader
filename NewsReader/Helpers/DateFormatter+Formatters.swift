@@ -23,7 +23,7 @@ extension DateFormatter {
         dateFormatter.dateFormat = "HH:mm dd. MMMM YYYY"
         return dateFormatter
     }()
-    
+
     static let RelativeTimeFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium

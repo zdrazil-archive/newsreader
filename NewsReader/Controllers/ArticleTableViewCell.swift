@@ -10,9 +10,9 @@ import UIKit
 import SDWebImage
 
 class ArticleTableViewCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var previewImage: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var previewImage: UIImageView!
 
     struct ViewData {
         let title: String?
@@ -20,10 +20,8 @@ class ArticleTableViewCell: UITableViewCell {
         let imageURL: URL?
 
         var publishedAtString: String? {
-            get {
                 let dateFormatter = DateFormatter.RelativeTimeFormatter
                 return dateFormatter.unwrappedString(from: publishedAt)
-            }
         }
     }
 
@@ -33,7 +31,8 @@ class ArticleTableViewCell: UITableViewCell {
             subtitleLabel.text = viewData?.publishedAtString
             self.previewImage.sd_setShowActivityIndicatorView(true)
             self.previewImage.sd_setIndicatorStyle(.gray)
-            self.previewImage.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
+            self.previewImage.sd_setImage(with: viewData?.imageURL,
+                                          placeholderImage: #imageLiteral(resourceName: "ArticlePlaceholder"))
         }
     }
 
@@ -58,4 +57,3 @@ extension ArticleTableViewCell.ViewData {
         self.imageURL = article.imageURL
     }
 }
-

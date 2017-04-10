@@ -13,14 +13,12 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     fileprivate lazy var articlesDataManager = ArticlesDataManager()
 
     fileprivate var previewSection: TableSectionHeader {
-        get {
-            return self.tableView.headerView(forSection: 0) as! TableSectionHeader
-        }
+        return self.tableView.headerView(forSection: 0) as! TableSectionHeader
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+
         articlesDataManager.delegate = self
 
         downloadArticles()
@@ -32,7 +30,6 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
     private func setTheme() {
         let navigationBar = self.navigationController?.navigationBar
@@ -98,13 +95,13 @@ extension ArticleTableViewController {
         setHeaderViewStyle(cell: cell)
         return cell
     }
-    
+
     private func addGestureRecognizerToHeaderView(cell: UITableViewHeaderFooterView?) {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
         let header = cell as! TableSectionHeader
         header.headerView.addGestureRecognizer(tap)
     }
-    
+
     private func setHeaderViewStyle(cell: UITableViewHeaderFooterView?) {
         cell?.contentView.backgroundColor = UIColor.white
     }
@@ -115,8 +112,8 @@ extension ArticleTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showArticleInHeader(atIndexPath: indexPath)
-      }
-    
+    }
+
     private func showArticleInHeader(atIndexPath: IndexPath) {
         let article = articlesDataManager.objectAt(at: atIndexPath) as! ArticleMO
         previewSection.viewData = TableSectionHeader.ViewData(article: article)
@@ -145,7 +142,8 @@ extension ArticleTableViewController {
 // MARK: - Link Preview
 extension ArticleTableViewController {
     // Manage tapping on article preview
-    @objc fileprivate func tapPreview(sender: UITapGestureRecognizer) {
+    @objc(tapPreview:)
+    fileprivate func tapPreview(sender: UITapGestureRecognizer) {
         showArticle()
     }
 
@@ -158,5 +156,3 @@ extension ArticleTableViewController {
         present(vc, animated: true)
     }
 }
-
-

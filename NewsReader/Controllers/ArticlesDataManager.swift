@@ -18,7 +18,7 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
 
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
 
-    var delegate: ArticlesDataManagerDelegate?
+    weak var delegate: ArticlesDataManagerDelegate?
 
     override init() {
         super.init()
@@ -31,8 +31,10 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
         let dataController = ((UIApplication.shared.delegate as? AppDelegate)?.dataController)!
         let moc = dataController.managedObjectContext
 
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
-
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
+                                                              managedObjectContext: moc,
+                                                              sectionNameKeyPath: nil,
+                                                              cacheName: nil)
 
         fetchedResultsController.delegate = self
 
@@ -43,12 +45,14 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
         }
     }
 
-
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         delegate?.dataManagerWillChangeContent(dataManager: self)
     }
 
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any, at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             delegate?.dataManager(dataManager: self, didInsertRowAtIndexPath: newIndexPath!)
@@ -65,12 +69,12 @@ class ArticlesDataManager: NSObject, NSFetchedResultsControllerDelegate {
         delegate?.dataManagerDidChangeContent(dataManager: self)
     }
 
-    func objectAt(at: IndexPath) -> NSFetchRequestResult {
-        return fetchedResultsController.object(at: at)
+    func objectAt(at indexPath: IndexPath) -> NSFetchRequestResult {
+        return fetchedResultsController.object(at: indexPath)
     }
 }
 
-protocol ArticlesDataManagerDelegate {
+protocol ArticlesDataManagerDelegate: class {
     func dataManagerWillChangeContent(dataManager: ArticlesDataManager)
     func dataManagerDidChangeContent(dataManager: ArticlesDataManager)
     func dataManager(dataManager: ArticlesDataManager, didInsertRowAtIndexPath indexPath: IndexPath)

@@ -12,30 +12,30 @@ import Alamofire
 import AlamofireObjectMapper
 
 class ArticlesDownloader: NSObject {
-    
+
     func downloadArticles(jsonURL: String) {
         Alamofire.request(jsonURL).responseObject { (response: DataResponse<ArticlesResponse>) in
-            
+
             let articlesResponse = response.result.value
-            
+
             guard articlesResponse?.status == "ok" else {
                 return
             }
             self.saveArticlesToCoreData(articles: articlesResponse?.articles)
         }
     }
-    
+
     private func saveArticlesToCoreData(articles: [Article]?) {
         let dataController = (UIApplication.shared.delegate as? AppDelegate)?.dataController
         let moc = dataController?.managedObjectContext
         let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        privateMOC.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType) 
+        privateMOC.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
         privateMOC.parent = moc
-        
+
         guard let articles = articles else {
             return
         }
-        
+
         privateMOC.perform {
             for article in articles {
                 _ = ArticleMO.createArticleMOEntity(article: article, inManagedObjectContext: privateMOC)

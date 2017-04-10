@@ -10,11 +10,11 @@ import UIKit
 import SDWebImage
 
 class TableSectionHeader: UITableViewHeaderFooterView {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var authorLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet weak var headerView: UIView!
 
     struct ViewData {
@@ -27,10 +27,8 @@ class TableSectionHeader: UITableViewHeaderFooterView {
         let sharingItems: [AnyObject]?
 
         var publishedAtString: String? {
-            get {
-                let dateFormatter = DateFormatter.AbsoluteTimeFormatter
-                return dateFormatter.unwrappedString(from: publishedAt)
-            }
+            let dateFormatter = DateFormatter.AbsoluteTimeFormatter
+            return dateFormatter.unwrappedString(from: publishedAt)
         }
     }
 
@@ -43,7 +41,8 @@ class TableSectionHeader: UITableViewHeaderFooterView {
 
             self.imageView?.sd_setShowActivityIndicatorView(true)
             self.imageView?.sd_setIndicatorStyle(.gray)
-            self.imageView?.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
+            self.imageView?.sd_setImage(with: viewData?.imageURL,
+                                        placeholderImage: #imageLiteral(resourceName: "ArticlePlaceholder"))
         }
     }
 }
@@ -61,5 +60,3 @@ extension TableSectionHeader.ViewData {
                              article.url as AnyObject]
     }
 }
-
-

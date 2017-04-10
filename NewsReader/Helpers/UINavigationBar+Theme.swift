@@ -15,7 +15,9 @@ extension UINavigationBar {
     // navigation bar
     func setStatusBarColor() {
         let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-        let statusBarView = UIView.init(frame: CGRect(x: 0, y: -statusBarHeight, width: UIScreen.main.bounds.size.width, height: statusBarHeight))
+        let statusBarView = UIView(frame: CGRect(x: 0, y: -statusBarHeight,
+                                                      width: UIScreen.main.bounds.size.width,
+                                                      height: statusBarHeight))
         statusBarView.backgroundColor = UIColor.black
         self.addSubview(statusBarView)
     }

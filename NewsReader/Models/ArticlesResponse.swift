@@ -13,11 +13,11 @@ struct ArticlesResponse: Mappable {
     var source: String?
     var sortBy: String?
     var articles: [Article]?
-    
+
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
         status   <- map["status"]
         source   <- map["source"]

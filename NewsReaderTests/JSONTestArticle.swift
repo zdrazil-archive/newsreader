@@ -18,7 +18,6 @@ struct JSONTestArticle {
 
     init() {
 
-
         let articleData = [ "author": author,
                             "title": title,
                             "description": description,

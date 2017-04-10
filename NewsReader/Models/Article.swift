@@ -15,11 +15,11 @@ struct Article: Mappable {
     var publishedAt: Date?
     var title: String?
     var url: URL?
-    
+
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
         description <- map["description"]
         author      <- map["author"]
