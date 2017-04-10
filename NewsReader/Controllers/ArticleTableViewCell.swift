@@ -39,8 +39,6 @@ class ArticleTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.imageView?.frame = CGRect(x: 15, y: 0, width: 83, height: 43.5)
-
     }
 
     // Prevent loading wrong image in reused cells, eq. when scrolling
