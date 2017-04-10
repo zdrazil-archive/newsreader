@@ -16,7 +16,7 @@ struct SharePopUp {
         self.activityViewController = getActivityViewController(sender: sender, sharingItems: sharingItems)
     }
     
-    func getActivityViewController(sender: UIBarButtonItem, sharingItems: [AnyObject]) -> UIActivityViewController {
+    private func getActivityViewController(sender: UIBarButtonItem, sharingItems: [AnyObject]) -> UIActivityViewController {
 
         let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
