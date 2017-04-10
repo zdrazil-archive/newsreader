@@ -10,6 +10,10 @@ import UIKit
 import SDWebImage
 
 class ArticleTableViewCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var previewImage: UIImageView!
+
     struct ViewData {
         let title: String?
         let publishedAt: Date?
@@ -25,14 +29,20 @@ class ArticleTableViewCell: UITableViewCell {
 
     var viewData: ViewData? {
         didSet {
-            textLabel?.text = viewData?.title
-            detailTextLabel?.text = viewData?.publishedAtString
-            self.imageView?.sd_setShowActivityIndicatorView(true)
-            self.imageView?.sd_setIndicatorStyle(.gray)
-            self.imageView?.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
+            titleLabel.text = viewData?.title
+            subtitleLabel.text = viewData?.publishedAtString
+            self.previewImage.sd_setShowActivityIndicatorView(true)
+            self.previewImage.sd_setIndicatorStyle(.gray)
+            self.previewImage.sd_setImage(with: viewData?.imageURL, placeholderImage: UIImage(named: "ArticlePlaceholder.png"))
         }
     }
-    
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.imageView?.frame = CGRect(x: 15, y: 0, width: 83, height: 43.5)
+
+    }
+
     // Prevent loading wrong image in reused cells, eq. when scrolling
     override func prepareForReuse() {
         super.prepareForReuse()

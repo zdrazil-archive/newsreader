@@ -6,45 +6,62 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Article Table View Controller-->
         <scene sceneID="MD1-jQ-KI6">
             <objects>
-                <tableViewController id="FeG-CN-APd" customClass="ArticleTableViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ArticleTableViewController" id="FeG-CN-APd" customClass="ArticleTableViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bzs-PV-5uu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" textLabel="gEf-hI-GqW" detailTextLabel="t0v-NW-DaB" imageView="JbS-2M-13p" style="IBUITableViewCellStyleSubtitle" id="WRq-1x-G0e" customClass="ArticleTableViewCell" customModule="NewsReader" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" id="rw1-Ni-R1K" customClass="ArticleTableViewCell" customModule="NewsReader" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WRq-1x-G0e" id="YE6-Ap-GGt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rw1-Ni-R1K" id="tDu-yv-iih">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gEf-hI-GqW">
-                                            <rect key="frame" x="74" y="5" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2K-d7-CfB">
+                                            <rect key="frame" x="96" y="3" width="271" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t0v-NW-DaB">
-                                            <rect key="frame" x="74" y="25.5" width="33" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qz6-rl-OHr" userLabel="Preview Image">
+                                            <rect key="frame" x="8" y="0.0" width="83" height="43.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="43.5" id="esn-7X-OkE"/>
+                                                <constraint firstAttribute="width" constant="83" id="vk1-3Z-5eV"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAN-Cj-O9q">
+                                            <rect key="frame" x="96" y="24" width="271" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="ArticlePlaceholder" id="JbS-2M-13p">
-                                            <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mAN-Cj-O9q" firstAttribute="leading" secondItem="qz6-rl-OHr" secondAttribute="trailing" constant="5" id="1cD-dO-5BL"/>
+                                        <constraint firstItem="qz6-rl-OHr" firstAttribute="centerY" secondItem="tDu-yv-iih" secondAttribute="centerY" id="26u-EI-FUl"/>
+                                        <constraint firstItem="x2K-d7-CfB" firstAttribute="top" secondItem="qz6-rl-OHr" secondAttribute="top" constant="3" id="2CK-uf-IlW"/>
+                                        <constraint firstItem="qz6-rl-OHr" firstAttribute="leading" secondItem="tDu-yv-iih" secondAttribute="leadingMargin" id="9QB-HF-1ob"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="mAN-Cj-O9q" secondAttribute="trailing" id="Hid-wx-ODt"/>
+                                        <constraint firstItem="mAN-Cj-O9q" firstAttribute="top" secondItem="x2K-d7-CfB" secondAttribute="bottom" id="hMV-3o-fVN"/>
+                                        <constraint firstItem="x2K-d7-CfB" firstAttribute="leading" secondItem="qz6-rl-OHr" secondAttribute="trailing" constant="5" id="oeK-oJ-Wx3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="x2K-d7-CfB" secondAttribute="trailing" id="zEJ-x3-mYf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="previewImage" destination="qz6-rl-OHr" id="Ez4-1N-zL5"/>
+                                    <outlet property="subtitleLabel" destination="mAN-Cj-O9q" id="XBT-Qc-dRo"/>
+                                    <outlet property="titleLabel" destination="x2K-d7-CfB" id="GYy-CU-3f3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -68,7 +85,4 @@
             <point key="canvasLocation" x="-82.400000000000006" y="96.7016491754123"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ArticlePlaceholder" width="50" height="50"/>
-    </resources>
 </document>
