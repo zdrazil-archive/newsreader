@@ -136,7 +136,7 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     }
     
     private func presentShareActivity(sender: UIBarButtonItem) {
-        let sharePopUp = SharePopOver(sender: sender, header: previewSection)
+        let sharePopUp = SharePopUp(sender: sender, header: previewSection)
         guard let activityViewController = sharePopUp.activityViewController else {
             return
         }

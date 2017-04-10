@@ -1,5 +1,5 @@
 //
-//  SharePopOver.swift
+//  SharePopUp.swift
 //  NewsReader
 //
 //  Created by Vladimír Zdražil on 04/04/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SharePopOver {
+struct SharePopUp {
     var activityViewController: UIActivityViewController?
     
     init(sender: UIBarButtonItem, header: TableSectionHeader) {
