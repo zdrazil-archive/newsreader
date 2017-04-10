@@ -29,6 +29,7 @@ class ArticlesDownloader: NSObject {
         let dataController = (UIApplication.shared.delegate as? AppDelegate)?.dataController
         let moc = dataController?.managedObjectContext
         let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateMOC.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType) 
         privateMOC.parent = moc
         
         guard let articles = articles else {
