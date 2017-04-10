@@ -10,9 +10,9 @@ import UIKit
 
 class ArticleTableViewController: UITableViewController, ArticlesDataManagerDelegate {
 
-    private lazy var articlesDataManager = ArticlesDataManager()
-    
-    private var previewSection: TableSectionHeader {
+    fileprivate lazy var articlesDataManager = ArticlesDataManager()
+
+    fileprivate var previewSection: TableSectionHeader {
         get {
             return self.tableView.headerView(forSection: 0) as! TableSectionHeader
         }
@@ -33,8 +33,42 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
+    private func setTheme() {
+        let navigationBar = self.navigationController?.navigationBar
+        navigationBar?.setStatusBarColor()
+        //        self.navigationController?.navigationBar.setTransparentNavigationBar()
+    }
+
+    private func downloadArticles() {
+        let stringURL = "http://testing.vladimirzdrazil.com/techcrunch.json"
+        let articlesDownloader = ArticlesDownloader()
+        articlesDownloader.downloadArticles(jsonURL: stringURL)
+    }
+
+    private func registerTableSectionHeader() {
+        let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
+    }
+
+    // MARK: - Share Button
+    @IBAction func tapShare(_ sender: UIBarButtonItem) {
+        showSharePopup(sender: sender)
+    }
+
+    private func showSharePopup(sender: UIBarButtonItem) {
+        guard let sharingItems = previewSection.viewData?.sharingItems else {
+            return
+        }
+        let activityViewController = UIActivityViewController(activityItems: sharingItems,
+                                                              applicationActivities: nil)
+        activityViewController.popoverPresentationController?.barButtonItem = sender
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Table view data source
+extension ArticleTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return articlesDataManager.articleSections?.count ?? 1
     }
@@ -54,7 +88,10 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
 
         return cell
     }
+}
 
+// MARK: - Table view delegate
+extension ArticleTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
         addGestureRecognizerToHeaderView(cell: cell)
@@ -84,7 +121,10 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         let article = articlesDataManager.objectAt(at: atIndexPath) as! ArticleMO
         previewSection.viewData = TableSectionHeader.ViewData(article: article)
     }
+}
 
+// MARK: - Article data manager delegate
+extension ArticleTableViewController {
     func dataManagerWillChangeContent(dataManager: ArticlesDataManager) {
         tableView.beginUpdates()
     }
@@ -93,13 +133,6 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         tableView.endUpdates()
     }
 
-    private func setTheme() {
-        let navigationBar = self.navigationController?.navigationBar
-        navigationBar?.setStatusBarColor()
-//        self.navigationController?.navigationBar.setTransparentNavigationBar()
-    }
-
-
     func dataManager(dataManager: ArticlesDataManager, didInsertRowAtIndexPath indexPath: IndexPath) {
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -107,24 +140,10 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
     func dataManager(dataManager: ArticlesDataManager, didDeleteRowAtIndexPath indexPath: IndexPath) {
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    
-    private func downloadArticles() {
-        let stringURL = "http://testing.vladimirzdrazil.com/techcrunch.json"
-        let articlesDownloader = ArticlesDownloader()
-        articlesDownloader.downloadArticles(jsonURL: stringURL)
-    }
-    
-    private func registerTableSectionHeader() {
-        let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
-        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
-    }
+}
 
-    private func addHeaderGestureRecognizer() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPreview(sender:)))
-        previewSection.addGestureRecognizer(tap)
-    }
-    
-    // MARK: - Preview Link
+// MARK: - Link Preview
+extension ArticleTableViewController {
     // Manage tapping on article preview
     @objc fileprivate func tapPreview(sender: UITapGestureRecognizer) {
         showArticle()
@@ -138,17 +157,6 @@ class ArticleTableViewController: UITableViewController, ArticlesDataManagerDele
         let vc = PreviewViewer.getSFSafariViewController(url: url)
         present(vc, animated: true)
     }
-    
-	// MARK: - Share Button
-    @IBAction func share(_ sender: UIBarButtonItem) {
-        presentShareActivity(sender: sender)
-    }
-    
-    private func presentShareActivity(sender: UIBarButtonItem) {
-        let sharePopUp = SharePopUp(sender: sender, header: previewSection)
-        guard let activityViewController = sharePopUp.activityViewController else {
-            return
-        }
-        self.present(activityViewController, animated: true, completion: nil)
-    }
 }
+
+

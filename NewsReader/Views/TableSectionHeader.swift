@@ -24,6 +24,7 @@ class TableSectionHeader: UITableViewHeaderFooterView {
         let articleURL: URL?
         let author: String?
         let description: String?
+        let sharingItems: [AnyObject]?
 
         var publishedAtString: String? {
             get {
@@ -55,6 +56,9 @@ extension TableSectionHeader.ViewData {
         self.articleURL = article.url
         self.author = article.author
         self.description = article.articleDescription
+
+        self.sharingItems = [article.title as AnyObject,
+                             article.url as AnyObject]
     }
 }
 

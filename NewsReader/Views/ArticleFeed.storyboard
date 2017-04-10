@@ -73,7 +73,7 @@
                     <navigationItem key="navigationItem" id="eDb-vS-i0b">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="ClU-IQ-6c3">
                             <connections>
-                                <action selector="share:" destination="FeG-CN-APd" id="DmD-jG-Sic"/>
+                                <action selector="tapShare:" destination="FeG-CN-APd" id="eyO-Mx-L9m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
