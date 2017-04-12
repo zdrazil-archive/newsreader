@@ -14,9 +14,4 @@ target 'NewsReader' do
     inherit! :search_paths
     # Pods for testing
   end
-
-  target 'NewsReaderUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 end
